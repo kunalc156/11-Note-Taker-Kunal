@@ -15,7 +15,7 @@ if (window.location.pathname === '/notes') {
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
-};
+}; 
 
 // Hide an element
 const hide = (elem) => {
@@ -61,6 +61,8 @@ const renderActiveNote = () => {
   } else {
     noteTitle.value = '';
     noteText.value = '';
+    noteTitle.removeAttribute('readonly');
+    noteText.removeAttribute('readonly');
   }
 };
 

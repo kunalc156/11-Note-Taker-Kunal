@@ -22,37 +22,30 @@ app.get('/', (req, res) => {(req, res) => res.sendFile(path.join(__dirname , './
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname , './public/notes.html')) );
 
 // If no matching route is found default to home
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 
 app.get('/api/notes', (req, res) => {
-    res.json(allSavedNotes)
+  console.log("inside api notes");
+  var copy =  Object.assign([], allSavedNotes);
+  res.json(copy);
 })
 
 app.post('/api/notes', (req, res) => {
         
-    //var notesArr = allSavedNotes.map();
-    //console.log(notesArr)
-
-     var notesArr = Object.keys(allSavedNotes).map(function(key) {
-        return [key, allSavedNotes[key]];
-      });
-
-      console.log(notesArr)
-     var valueToBeAdded = Object.keys(req.body).map(function(key) {
-        return [key, req.body[key]];
-      });
-      
-    //var valueToBeAdded = Object.entries(req.body)
-   // notesArr.push(valueToBeAdded);
-    //const data  = JSON.stringify(notesArr)
-
-    //console.log(data);
-    /*fs.writeFile(path.join(__dirname, './db/db.json'), data, (err) =>{
+      var copy =  Object.assign([], allSavedNotes)
+      var newNote = {};
+      newNote = req.body;
+      newNote.id = allSavedNotes.length;
+      copy.push(newNote);
+      const data = JSON.stringify(copy);
+   
+      fs.writeFile(path.join(__dirname, './db/db.json'), data, (err) =>{
         if (err) throw err;
-    });  
+      });  
 
-    res.json(notesArr) */
+    res.json(copy)
 })
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
+
 // Starts the server to begin listening
 app.listen(PORT, 'localhost', () => console.log(`App listening on PORT ${PORT}`));
 
