@@ -1,8 +1,9 @@
 # 11-Note-Taker-Kunal
 
+The application uses an Express.js backend which allows users to take notes and save notes.
+
 
 ```
-GIVEN a note-taking application
 WHEN I open the Note Taker
 THEN I am presented with a landing page with a link to a notes page
 WHEN I click on the link to the notes page
@@ -19,4 +20,6 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 # Live Application
  https://kunalc156.github.io/11-Note-Taker-Kunal/
- 
+
+# URLs
+Heroku: http://secure-refuge-64153.herokuapp.com/
