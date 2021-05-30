@@ -47,5 +47,5 @@ app.post('/api/notes', (req, res) => {
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 
 // Starts the server to begin listening
-app.listen(PORT, 'localhost', () => console.log(`App listening on PORT ${PORT}`));
+app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
 
